@@ -7,8 +7,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     public WebDriver wd;
-
     private SessionHelper sessionHelper;
+    private ContactHelper contactHelper;
     private NavigationHelper navigationHelper;
     public GroupHelper groupHelper;
 
@@ -16,6 +16,7 @@ public class ApplicationManager {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/group.php");
+        contactHelper = new ContactHelper(wd);
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
@@ -35,4 +36,9 @@ public class ApplicationManager {
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
     }
+
+    public ContactHelper getContactHelper() {
+        return contactHelper;
+    }
+
 }
