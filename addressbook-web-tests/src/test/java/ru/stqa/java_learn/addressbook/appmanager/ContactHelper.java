@@ -11,6 +11,13 @@ public class ContactHelper extends HelperBase {
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
+    public void goToAddNewContact() {
+        click(By.linkText("add new"));
+    }
+
+    public void gotoHomePage() {
+        click(By.linkText("home"));
+    }
 
     public void submitContactCreation() {
         click(By.xpath("//div[@id='content']/form/input[21]"));
@@ -50,5 +57,16 @@ public class ContactHelper extends HelperBase {
 
     public void submitContactUpdate() {
         click(By.xpath("//input[22]"));
+    }
+
+    public void createContact(ContactData contact) {
+        goToAddNewContact();
+        fillContactForm(new ContactData("ivan", "ivanovich", "testadd", "777777", "8910111111", "test@test.ru","test2"), true);
+        submitContactCreation();
+        gotoHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
     }
 }
