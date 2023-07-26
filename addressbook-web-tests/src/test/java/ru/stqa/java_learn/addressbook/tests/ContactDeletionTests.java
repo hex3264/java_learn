@@ -1,22 +1,28 @@
 package ru.stqa.java_learn.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.java_learn.addressbook.model.ContactData;
-import ru.stqa.java_learn.addressbook.model.GroupData;
+
+import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
     @Test
     public void testContactDeletion() {
+        app.getNavigationHelper().gotoHomePage();
         if (!app.getContactHelper().isThereAContact()) {
-            app.getNavigationHelper().goToGroupPage();
-            if (! app.getGroupHelper().isThereAGroup()) {
-                app.getGroupHelper().createGroup(new GroupData("test2", null, null));
-            }
-            app.getContactHelper().createContact(new ContactData("ivan", "ivanovich", "testadd", "777777", "8910111111", "test@test.ru", null));
+            app.getContactHelper().createContact(new ContactData("ivan", "ivanovich", "testadd", "test@test.ru", "[none]"));
         }
-            app.getContactHelper().selectContact();
-            app.getContactHelper().deleteSelectedContact();
-            app.getContactHelper().confirmContactDeletion();
-        }
+        List<ContactData> before = app.getContactHelper().getContactList();
+        app.getContactHelper().selectContact(before.size() - 1);
+        app.getContactHelper().deleteSelectedContact();
+        app.getContactHelper().confirmContactDeletion();
+        app.getNavigationHelper().gotoHomePage();
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(), before.size() - 1);
+
+        before.remove(before.size() - 1);
+        Assert.assertEquals(before, after);
     }
+}
