@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite2" verbose="1" >
+    <test name="Contacts" >
+        <classes>
+            <class name="ru.stqa.java_learn.addressbook.tests.ContactCreationTests"></class>
+            <class name="ru.stqa.java_learn.addressbook.tests.ContactModificationTests"></class>
+            <class name="ru.stqa.java_learn.addressbook.tests.ContactDeletionTests"></class>
+        </classes>
+    </test>
+</suite>
