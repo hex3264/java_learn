@@ -1,21 +1,41 @@
 package ru.stqa.java_learn.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
+    @Expose
     private String firstname;
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String lastname;
     private String address;
+    @Expose
     private String email1;
     private String email2;
     private String email3;
+    @Expose
     private String group;
+    @Expose
     private String homePhone;
+    @Expose
     private String mobilePhone;
+    @Expose
     private String workPhone;
     private String allPhones;
     private String allEmail;
+    private File photo;
+
+    public File getPhoto() {
+        return photo;
+    }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
 
     public String getFirstname() {
         return firstname;

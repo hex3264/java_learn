@@ -1,0 +1,29 @@
+[
+  {
+    "firstname": "ivan 0",
+    "lastname": "ivanovich 0",
+    "email1": "test@test.ru",
+    "group": "[none]",
+    "homePhone": "3330",
+    "mobilePhone": "2220",
+    "workPhone": "1110"
+  },
+  {
+    "firstname": "ivan 1",
+    "lastname": "ivanovich 1",
+    "email1": "test@test.ru",
+    "group": "[none]",
+    "homePhone": "3331",
+    "mobilePhone": "2221",
+    "workPhone": "1111"
+  },
+  {
+    "firstname": "ivan 2",
+    "lastname": "ivanovich 2",
+    "email1": "test@test.ru",
+    "group": "[none]",
+    "homePhone": "3332",
+    "mobilePhone": "2222",
+    "workPhone": "1112"
+  }
+]
