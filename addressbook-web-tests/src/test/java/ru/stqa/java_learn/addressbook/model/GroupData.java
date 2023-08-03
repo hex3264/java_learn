@@ -1,77 +1,87 @@
 package ru.stqa.java_learn.addressbook.model;
 
-import com.google.gson.annotations.Expose;
 
+import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
-public class GroupData {
-    private int id = Integer.MAX_VALUE;
-    @Expose
-    private  String name;
-    @Expose
-    private  String header;
-    @Expose
-    private  String footer;
+@Entity
+@Table(name = "group_list")
+        public class GroupData {
+        @Override
+        public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                GroupData groupData = (GroupData) o;
+                return id == groupData.id && Objects.equals(name, groupData.name) && Objects.equals(header, groupData.header) && Objects.equals(footer, groupData.footer);
+        }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        @Override
+        public int hashCode() {
+                return Objects.hash(id, name, header, footer);
+        }
 
-        GroupData groupData = (GroupData) o;
+        @Id
+        @Column(name = "group_id")
+        private int id = Integer.MAX_VALUE;
+        @Expose
+        @Column(name = "group_name")
+        private  String name;
+        @Expose
+        @Column(name = "group_header")
+        @Type(type = "text")
+        private  String header;
+        @Expose
+        @Column(name = "group_footer")
+        @Type(type = "text")
+        private  String footer;
 
-        if (id != groupData.id) return false;
-        return Objects.equals(name, groupData.name);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
-    public GroupData withName(String name) {
+        public GroupData withName(String name) {
         this.name = name;
         return this;
-    }
+        }
 
-    public GroupData withHeader(String header) {
+public GroupData withHeader(String header) {
         this.header = header;
         return this;
-    }
+        }
 
-    public GroupData withFooter(String footer) {
+public GroupData withFooter(String footer) {
         this.footer = footer;
         return this;
-    }
+        }
 
-    public GroupData withId(int id) {
+public GroupData withId(int id) {
         this.id = id;
         return this;
-    }
-    public String getName() {
+        }
+public String getName() {
         return name;
-    }
+        }
 
-    public int getId() {
+public int getId() {
         return id;
-    }
+        }
 
-    public String getHeader() {
+public String getHeader() {
         return header;
-    }
+        }
 
-    public String getFooter() {
+public String getFooter() {
         return footer;
-    }
+        }
 
-    @Override
-    public String toString() {
+@Override
+public String toString() {
         return "GroupData{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
+        "id='" + id + '\'' +
+        ", name='" + name + '\'' +
+        '}';
+        }
 
-}
+        }

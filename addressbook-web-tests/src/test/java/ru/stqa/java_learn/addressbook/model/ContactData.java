@@ -1,41 +1,57 @@
 package ru.stqa.java_learn.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
+
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
-    @Expose
-    private String firstname;
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
     @Expose
+    @Column(name = "firstname")
+    private String firstname;
+    @Expose
+    @Column(name = "lastname")
     private String lastname;
+    @Column(name = "address")
+    @Type(type = "text")
     private String address;
     @Expose
+    @Column(name = "email")
+    @Type(type = "text")
     private String email1;
+    @Column(name = "email2")
+    @Type(type = "text")
     private String email2;
+    @Column(name = "email3")
+    @Type(type = "text")
     private String email3;
     @Expose
+    @Transient
     private String group;
     @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String homePhone;
     @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String mobilePhone;
     @Expose
+    @Column(name = "work")
+    @Type(type = "text")
     private String workPhone;
+    @Transient
     private String allPhones;
+    @Transient
     private String allEmail;
-    private File photo;
-
-    public File getPhoto() {
-        return photo;
-    }
-
-    public ContactData withPhoto(File photo) {
-        this.photo = photo;
-        return this;
-    }
 
     public String getFirstname() {
         return firstname;
