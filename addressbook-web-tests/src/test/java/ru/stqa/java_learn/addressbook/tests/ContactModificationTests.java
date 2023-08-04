@@ -17,13 +17,14 @@ public class ContactModificationTests extends TestBase{
         if (app.db().contacts().size() == 0) {
             app.contact().create(new ContactData()
                     .withFirstname("ivan").withLastname("ivanovich").withEmail1("test@test.ru").withAddress("testadd")
-                    .withGroup("[none]").withWorkPhone("111").withMobilePhone("222").withHomePhone("333"));
+                    .withWorkPhone("111").withMobilePhone("222").withHomePhone("333"));
         }
     }
 
 
     @Test
     public void testContactModification() {
+        app.goTo().homePage();
         Contacts before = app.db().contacts();
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Vasiliy")
