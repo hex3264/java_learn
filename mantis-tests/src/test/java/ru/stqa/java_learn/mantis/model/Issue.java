@@ -1,5 +1,6 @@
 package ru.stqa.java_learn.mantis.model;
 
+
 public class Issue {
     private int id;
     private String summary;
